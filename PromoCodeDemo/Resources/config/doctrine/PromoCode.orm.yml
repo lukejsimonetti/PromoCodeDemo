@@ -1,0 +1,63 @@
+Bundle\SchemaBundle\Entity\PromoCode:
+  type: entity
+  table: promo_code
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    createdAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          'on': create
+    updatedAt:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          'on': update
+    startAt:
+      type: datetime
+      nullable: true
+    endAt:
+      type: datetime
+      nullable: true
+    config:
+      type: string
+      nullable: true
+      options:
+        default: null
+    code:
+      type: string
+      length: 50
+      nullable: false
+    label:
+      type: string
+      length: 255
+      nullable: false
+    description:
+      type: string
+      nullable: false
+      options:
+        default: ''
+    isActive:
+      type: integer
+      length: 1
+      nullable: false
+      options:
+        default: '0'
+  oneToMany:
+    carts:
+      targetEntity: Bundle\SchemaBundle\Entity\Cart
+      mappedBy: promoCode
+  manyToOne:
+    catalogItem:
+      targetEntity: Bundle\SchemaBundle\Entity\CatalogItem
+      inversedBy: promoCodes
+      joinColumns:
+        catalog_item_id:
+          referencedColumnName: id
+          nullable: false
