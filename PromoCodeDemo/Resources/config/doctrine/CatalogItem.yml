@@ -1,0 +1,81 @@
+Bundle\SchemaBundle\Entity\CatalogItem:
+  type: entity
+  table: catalog_item
+  id:
+    id:
+      type: integer
+      length: 11
+      generator:
+        strategy: AUTO
+  fields:
+    itemCode:
+      type: string
+      length: 45
+      nullable: true
+      options:
+        default: NULL
+    label:
+      type: string
+      length: 45
+      nullable: true
+      options:
+        default: NULL
+    description:
+      type: string
+      nullable: true
+      options:
+        default: NULL
+    price:
+      type: decimal
+      length: 10
+      nullable: false
+      scale: 2
+      options:
+        default: '0.00'
+    renewalPrice:
+      type: decimal
+      length: 10
+      nullable: false
+      scale: 2
+      options:
+        default: '0.00'
+    shipping:
+      type: decimal
+      length: 10
+      nullable: false
+      scale: 2
+      options:
+        default: '0.00'
+    taxable:
+      type: decimal
+      length: 10
+      nullable: false
+      scale: 2
+      options:
+        default: '0.00'
+    isActive:
+      type: integer
+      length: 1
+      nullable: true
+      options:
+        default: NULL
+  oneToMany:
+    conferenceType:
+      targetEntity: Bundle\SchemaBundle\Entity\ConferenceType
+      mappedBy: manualCatalogItem
+    products:
+      targetEntity: Bundle\SchemaBundle\Entity\Product
+      mappedBy: catalogItem
+    invoiceLines:
+      targetEntity: Bundle\SchemaBundle\Entity\InvoiceLine
+      mappedBy: catalogItem
+    promoCodes:
+      targetEntity: Bundle\SchemaBundle\Entity\PromoCode
+      mappedBy: catalogItem
+  manyToOne:
+    catalogItemType:
+      targetEntity: Bundle\SchemaBundle\Entity\CatalogItemType
+      inversedBy: catalogItems
+      joinColumns:
+        catalog_item_type_id:
+          referencedColumnName: id
