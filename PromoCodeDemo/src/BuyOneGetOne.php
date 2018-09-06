@@ -3,9 +3,7 @@
 namespace Bundle\PublicSiteBundle\Component\Cart\TotalsGenerator\PromoCode;
 
 use Bundle\SchemaBundle\Entity\CatalogItem;
-use Bundle\PublicSiteBundle\Component\Cart\Exception\{
-    NotYetValid, Expired, MinimumSubtotalRequired, MatchingCartItemSystemRequired
-};
+
 
 class BuyOneGetOne extends PromoCodeAbstract
 {

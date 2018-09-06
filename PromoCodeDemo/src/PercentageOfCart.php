@@ -2,10 +2,6 @@
 
 namespace Bundle\PublicSiteBundle\Component\Cart\TotalsGenerator\PromoCode;
 
-use Bundle\PublicSiteBundle\Component\Cart\Exception\{
-    NotYetValid, Expired, MinimumSubtotalRequired, MatchingCartItemSystemRequired
-};
-
 class PercentageOfCart extends PromoCodeAbstract
 {
     /**
